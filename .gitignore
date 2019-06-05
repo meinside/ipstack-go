@@ -1,0 +1,3 @@
+*.swp*
+
+cmd/ip2loc/ip2loc
