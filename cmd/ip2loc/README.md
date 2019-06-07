@@ -33,11 +33,23 @@ then it will print the location info of the external ip address of your machine.
 
 ### run with param(s):
 
-```bash
-# one ip address
-$ $GOPATH/bin/ip2loc 1.1.1.1
+#### one ip address
 
-# multiple ip addresses (not supported on free plan)
+```shell
+$ $GOPATH/bin/ip2loc 1.1.1.1
+```
+
+```bash
+1.1.1.1 / one.one.one.one (Australia)
+```
+
+#### multiple ip addresses (not supported on free plan)
+
+```shell
 $ $GOPATH/bin/ip2loc 8.8.8.8 8.8.4.4
 ```
 
+```bash
+8.8.8.8 / google-public-dns-a.google.com (United States)
+8.8.4.4 / google-public-dns-a.google.com (United States)
+```
