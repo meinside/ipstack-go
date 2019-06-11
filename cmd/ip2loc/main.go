@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"os/user"
 	"path/filepath"
@@ -20,6 +21,10 @@ type config struct {
 	AccessKey string `json:"access_key"`
 	IsPremium bool   `json:"is_premium"`
 }
+
+// loggers
+var _stdout = log.New(os.Stdout, "", 0)
+var _stderr = log.New(os.Stderr, "", 0)
 
 // load config file
 func loadConf() (conf config, err error) {
@@ -40,9 +45,7 @@ func loadConf() (conf config, err error) {
 
 // print error and exit
 func printErrorAndExit(err error) {
-	fmt.Println(err.Error())
-
-	os.Exit(1)
+	_stderr.Fatalf(err.Error())
 }
 
 func printRes(res ipstack.Response) {
@@ -69,9 +72,9 @@ func printRes(res ipstack.Response) {
 
 	// print them
 	if len(strs) > 0 {
-		fmt.Printf("%s (%s)\n", host, strings.Join(strs, ", "))
+		_stdout.Printf("%s (%s)\n", host, strings.Join(strs, ", "))
 	} else {
-		fmt.Printf("%s\n", host)
+		_stdout.Printf("%s\n", host)
 	}
 }
 
